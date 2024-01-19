@@ -9,40 +9,45 @@ import (
 )
 
 type Menu interface {
-	make_breakfast() string
-	make_lunch() string
-	make_dinner() string
+	MakeBreakfast() string
+	MakeLunch() string
+	MakeDinner() string
 }
 
-type Restuarant struct {
-	best_breakfast string
-	best_lunch     string
-	best_dinner    string
+type Restaurant struct {
+	BestBreakfast string
+	BestLunch     string
+	BestDinner    string
 }
 
-func (r Restuarant) make_breakfast() string {
-	return r.best_breakfast
+// implement Menu interface for type Restaurant
+func (r Restaurant) MakeBreakfast() string {
+	return r.BestBreakfast
 }
 
-func (r Restuarant) make_lunch() string {
-	return r.best_lunch
+func (r Restaurant) MakeLunch() string {
+	return r.BestLunch
 }
 
-func (r Restuarant) make_dinner() string {
-	return r.best_dinner
+func (r Restaurant) MakeDinner() string {
+	return r.BestDinner
 }
 
-func cook_all(r Restuarant) {
-	fmt.Println("Breakfast:", r.make_breakfast())
-	fmt.Println("Lunch:", r.make_lunch())
-	fmt.Println("Dinner:", r.make_dinner())
+func cook_all(m Menu) {
+	fmt.Println("Breakfast:", m.MakeBreakfast())
+	fmt.Println("Lunch:", m.MakeLunch())
+	fmt.Println("Dinner:", m.MakeDinner())
 }
 
 func display_food() {
-	gordon_ramsay_hells_kitchen := Restuarant{
-		best_breakfast: "steak&eggs",
-		best_lunch:     "oysters",
-		best_dinner:    "king crab",
+	gordon_ramsay_hells_kitchen := Restaurant{
+		BestBreakfast: "steak&eggs",
+		BestLunch:     "oysters",
+		BestDinner:    "king crab",
 	}
-	fmt.Println(cook_all(gordon_ramsay_hells_kitchen))
+	cook_all(gordon_ramsay_hells_kitchen)
+}
+
+func main() {
+	display_food()
 }
