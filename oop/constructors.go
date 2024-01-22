@@ -19,8 +19,8 @@ func (d *Dog) NewDog(name string, breed string) {
 	d.Breed = breed
 }
 
-func define_dogs() {
-	dog := new(Dog)
+func PrintDog() {
+	dog := new(Dog) // allocate memory, pointer for var of type dog
 	dog.NewDog("Max", "poodle")
 	fmt.Printf("%s\n", dog.Name)
 	fmt.Printf("%s\n", dog.Breed)

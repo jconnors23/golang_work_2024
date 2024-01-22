@@ -18,7 +18,7 @@ type Shirt struct {
 	Clothing
 }
 
-func define_shirts() {
+func PrintShirt() {
 	shirt := &Shirt{
 		Clothing{
 			Color: "blue",

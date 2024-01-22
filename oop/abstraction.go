@@ -19,25 +19,28 @@ type Poultry struct {
 	Brand    string
 }
 
-func (c Chips) GetCalories() int {
+func (c *Chips) GetCalories() int {
 	return c.Calories
 }
 
-func (c Chips) GetBrand() string {
+func (c *Chips) GetBrand() string {
 	return c.Brand
 }
 
-func (p Poultry) GetCalories() int {
+func (p *Poultry) GetCalories() int {
 	return p.Calories
 }
 
-func (p Poultry) GetBrand() string {
+func (p *Poultry) GetBrand() string {
 	return p.Brand
 }
 
 // main uses food interface without knowing type of food = abstraction(hiding details of food types)
 func main() {
 	f := Chips{Calories: 200, Brand: "Lays"}
+	f2 := Poultry{Calories: 350, Brand: "365 Whole Foods"}
 	fmt.Println(f.GetCalories())
 	fmt.Println(f.GetBrand())
+	fmt.Println(f2.GetCalories())
+	fmt.Println(f2.GetBrand())
 }

@@ -10,9 +10,9 @@ import (
 )
 
 type Menu interface {
-	MakeBreakfast() string
-	MakeLunch() string
-	MakeDinner() string
+	makeBreakfast() string
+	makeLunch() string
+	makeDinner() string
 }
 
 type Restaurant struct {
@@ -22,29 +22,29 @@ type Restaurant struct {
 }
 
 // implement Menu interface for type Restaurant
-func (r Restaurant) MakeBreakfast() string {
+func (r Restaurant) makeBreakfast() string {
 	return r.BestBreakfast
 }
 
-func (r Restaurant) MakeLunch() string {
+func (r Restaurant) makeLunch() string {
 	return r.BestLunch
 }
 
-func (r Restaurant) MakeDinner() string {
+func (r Restaurant) makeDinner() string {
 	return r.BestDinner
 }
 
-func cook_all(m Menu) {
-	fmt.Println("Breakfast:", m.MakeBreakfast())
-	fmt.Println("Lunch:", m.MakeLunch())
-	fmt.Println("Dinner:", m.MakeDinner())
+func cookAll(m Menu) {
+	fmt.Println("Breakfast:", m.makeBreakfast())
+	fmt.Println("Lunch:", m.makeLunch())
+	fmt.Println("Dinner:", m.makeDinner())
 }
 
-func display_food() {
+func printFood() {
 	gordon_ramsay_hells_kitchen := Restaurant{
 		BestBreakfast: "steak&eggs",
 		BestLunch:     "oysters",
 		BestDinner:    "king crab",
 	}
-	cook_all(gordon_ramsay_hells_kitchen)
+	cookAll(gordon_ramsay_hells_kitchen)
 }
