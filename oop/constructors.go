@@ -1,5 +1,7 @@
-// constructors are methods used to initialize object properties and are a common feature of object oriented programming
-// Go does not have defined contstructor methods, but similar functionality can be acheived through custom functions
+// constructors are methods used to initialize object properties and are a common feature of
+//object oriented programming
+// Go does not have defined contstructor methods,
+//but similar functionality can be acheived through custom functions
 
 package main
 

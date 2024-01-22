@@ -6,15 +6,20 @@
 
 package main
 
-type Food struct {
-	calories int
-	name     string
+type Player struct {
+	Team     string
+	Name     string
+	Position string
 }
 
-func (f *Food) GetCalories() int {
-	return f.calories
+func (p *Player) GetTeam() string {
+	return p.Team
 }
 
-func (f *Food) getName() string {
-	return f.name
+func (p *Player) GetName() string {
+	return p.Name
+}
+
+func (p *Player) GetPosition() string {
+	return p.Position
 }

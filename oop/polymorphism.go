@@ -1,4 +1,5 @@
-// go acheives polymorphism through interfaces
+// polymorphism is about defining objects that change behavior based on context
+//go acheives polymorphism through interfaces
 // a type implements an interface by providing funciton definitions for each method declared within the interface
 // different types can implement the interface in different ways
 
@@ -46,8 +47,4 @@ func display_food() {
 		BestDinner:    "king crab",
 	}
 	cook_all(gordon_ramsay_hells_kitchen)
-}
-
-func main() {
-	display_food()
 }
