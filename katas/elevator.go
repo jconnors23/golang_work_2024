@@ -49,6 +49,7 @@ func floor_selection(e *Elevator) {
 			break
 		} else {
 			floor_selections = append(floor_selections, button)
+			fmt.Printf("%d\n", floor_selections)
 		}
 	}
 	for _, v := range floor_selections {
@@ -62,11 +63,23 @@ func floor_selection(e *Elevator) {
 
 func enqueue(e *Elevator, desired_floor int) {
 	to_queue := desired_floor
+
 	if to_queue < 1 || to_queue > 10 {
 		stop()
+	} else if contains(e, to_queue) {
+		return
 	} else {
 		e.Queue = append(e.Queue, to_queue) // enqueue
 	}
+}
+
+func contains(e *Elevator, to_queue int) bool {
+	for _, floor := range e.Queue {
+		if floor == to_queue {
+			return true
+		}
+	}
+	return false
 }
 
 func ascend_descend(e *Elevator) {
