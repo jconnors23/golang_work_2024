@@ -37,6 +37,8 @@ func main() {
 			floor_selection(&elevator)
 			// if no additional floors entered
 			if len(elevator.Queue) == 1 {
+				elevator.Queue = []int{1}
+				ascend_descend(&elevator)
 				stop()
 			}
 		}
@@ -71,9 +73,6 @@ func floor_selection(e *Elevator) {
 	for _, v := range floor_selections {
 		enqueue(e, v)
 	}
-	// if len(e.Queue) > 0 {
-	// 	floor_selection(e) // recursive if queue has floors still in it, user is also allowed to augment queue with new floor inputs
-	// }
 }
 
 func enqueue(e *Elevator, desired_floor int) {
@@ -121,6 +120,7 @@ func ding(e *Elevator, current int) {
 }
 
 func stop() {
+	fmt.Printf("Base Floor: 1\n")
 	fmt.Println("No floors queued or service unavailable.")
 	os.Exit(0)
 }
