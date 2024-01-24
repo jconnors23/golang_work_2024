@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"sort"
 	"time"
 )
 
@@ -29,12 +30,14 @@ func main() {
 	elevator := Elevator{Floor: 1}
 	fmt.Printf("Base Floor: 1\n")
 	floor_selection(&elevator)
+	sort_by_distance(&elevator)
 	for len(elevator.Queue) > 0 {
 		ascend_descend(&elevator)
 		// prevent index out of range
 		if len(elevator.Queue) == 1 {
 			ding(&elevator, elevator.Queue[0])
 			floor_selection(&elevator)
+			sort_by_distance(&elevator)
 			// if no additional floors entered
 			if len(elevator.Queue) == 1 {
 				elevator.Queue = []int{1}
@@ -77,7 +80,6 @@ func floor_selection(e *Elevator) {
 
 func enqueue(e *Elevator, desired_floor int) {
 	to_queue := desired_floor
-
 	if to_queue < 1 || to_queue > 10 {
 		stop()
 	} else if contains(e, to_queue) {
@@ -105,7 +107,7 @@ func ascend_descend(e *Elevator) {
 		fmt.Printf("Descending %v \n", arrow)
 	}
 	// distance in b/w floors
-	distance := math.Abs(float64(e.Queue[0]) - float64(e.Floor))
+	distance := absolute_value(e.Queue[0], e.Floor)
 	// each floor will take 2 units of time to ascend / descend to
 	trip_time := int(distance * 2)
 	for trip_time > 0 {
@@ -117,6 +119,19 @@ func ascend_descend(e *Elevator) {
 func ding(e *Elevator, current int) {
 	e.Floor = current // floor after movement
 	fmt.Printf("'Ding'. %v floor\n", current)
+}
+
+// sort our queue by distance to current floor
+func sort_by_distance(e *Elevator) {
+	distace_to := e.Queue[0]
+	sort.Slice(e.Queue, func(i, j int) bool {
+		return absolute_value(distace_to, e.Queue[i]) < absolute_value(distace_to, e.Queue[j])
+	})
+	fmt.Println(e.Queue)
+}
+
+func absolute_value(x, y int) float64 {
+	return math.Abs(float64(x) - float64(y))
 }
 
 func stop() {
