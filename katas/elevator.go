@@ -1,21 +1,5 @@
 // simulate an elevator software system
 
-/*
-features to implement:
-able to enter floors always
-actual timing
-fifo queueing, unique vals
-timing/goroutines,
-beep funcionality show current floor as we a, d
-fmt.Printf("'Beep'. %v floor\n", e.Floor)
-firealarm logic, call stop when user pulls firealarm
-scaling time for how long elevator would take to reach each floor
-print 2d array showing floors in building
-queue can have go routine and if empty after 10 seconds os running status becomes false?
-logic based on distance bw floors to deque
-
-[9 1 8]
-*/
 package main
 
 import (
@@ -139,3 +123,11 @@ func stop() {
 	fmt.Println("No floors queued or service unavailable.")
 	os.Exit(0)
 }
+
+/*
+future potential features:
+able to enter floors always - go routines?
+beep funcionality & show current floor as we ascend / descend each floor - fmt.Printf("'Beep'. %v floor\n", e.Floor)
+firealarm logic, call stop when user pulls firealarm
+print floors as grid in floor_selection
+*/
