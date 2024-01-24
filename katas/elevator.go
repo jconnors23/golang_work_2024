@@ -5,6 +5,8 @@ features to implement:
 
 fifo queueing, unique vals
 timing/goroutines,
+beep funcionality show current floor as we a, d
+fmt.Printf("'Beep'. %v floor\n", e.Floor)
 firealarm logic, call stop when user pulls firealarm
 scaling time for how long elevator would take to reach each floor
 print 2d array showing floors in building
@@ -24,8 +26,14 @@ import (
 
 func main() {
 	elevator := Elevator{Floor: 1}
-	floor_selection(&elevator)
-	stop()
+	fmt.Printf("Base Floor: 1\n")
+	for len(elevator.Queue) >= 1 {
+		floor_selection(&elevator)
+		ascend_descend(&elevator)
+		if len(elevator.Queue) == 1 {
+
+		}
+	}
 }
 
 type Elevator struct {
@@ -40,8 +48,7 @@ func floor_selection(e *Elevator) {
 		{4, 5, 6},
 		{7, 8, 9},
 	}
-	fmt.Printf("Base Floor: 1\n")
-	fmt.Printf("Select floor(s) (0 to stop):\n%d\n ", floors)
+	fmt.Printf("Select floor(s) (0 to stop):\n%d\n ", floors) // needs scanning go routine
 	for {
 		var button int
 		fmt.Scanln(&button)
@@ -55,10 +62,9 @@ func floor_selection(e *Elevator) {
 	for _, v := range floor_selections {
 		enqueue(e, v)
 	}
-	ascend_descend(e)
-	if len(e.Queue) > 0 {
-		floor_selection(e) // recursive if queue has floors still in it, user is also allowed to augment queue with new floor inputs
-	}
+	// if len(e.Queue) > 0 {
+	// 	floor_selection(e) // recursive if queue has floors still in it, user is also allowed to augment queue with new floor inputs
+	// }
 }
 
 func enqueue(e *Elevator, desired_floor int) {
@@ -92,19 +98,28 @@ func ascend_descend(e *Elevator) {
 	}
 	// distance in b/w floors
 	distance := math.Abs(float64(e.Queue[0]) - float64(e.Floor))
-	// each floor will take 10 units of time to ascend / descend to
-	trip_time := int(distance * 10)
+	// each floor will take 2 units of time to ascend / descend to
+	trip_time := int(distance * 2)
 	for trip_time > 0 {
-		time.Sleep(2 * time.Second) // mimic elevator ascending/descending
-		fmt.Printf("'Beep'. %v floor", e.Floor)
-		trip_time -= 10
+		time.Sleep(time.Second) // mimic elevator ascending/descending
+		trip_time -= 2
 	}
-	e.Floor = e.Queue[0]  // current floor after we have moved up or down
+	// prevent index out of range
+	if len(e.Queue) == 1 {
+		e.Floor = e.Queue[0] // current floor after we have moved up or down
+		fmt.Printf("'Ding'. %v floor\n", e.Floor)
+		floor_selection(e)
+		// if no additional floors entered
+		if len(e.Queue) == 1 {
+			stop()
+		} else {
+			return
+		}
+
+	}
 	e.Queue = e.Queue[1:] // dequeue, remove the floor that we traveled to from our queue
-	fmt.Printf("'Ding'. %v floor", e.Floor)
-	if len(e.Queue) == 0 {
-		stop()
-	}
+	e.Floor = e.Queue[0]  // current floor after we have moved up or down
+	fmt.Printf("'Ding'. %v floor\n", e.Floor)
 }
 
 func stop() {
