@@ -2,7 +2,8 @@
 
 /*
 features to implement:
-
+able to enter floors always
+actual timing
 fifo queueing, unique vals
 timing/goroutines,
 beep funcionality show current floor as we a, d
@@ -27,12 +28,20 @@ import (
 func main() {
 	elevator := Elevator{Floor: 1}
 	fmt.Printf("Base Floor: 1\n")
-	for len(elevator.Queue) >= 1 {
-		floor_selection(&elevator)
+	floor_selection(&elevator)
+	for len(elevator.Queue) > 0 {
 		ascend_descend(&elevator)
+		// prevent index out of range
 		if len(elevator.Queue) == 1 {
-
+			ding(&elevator, elevator.Queue[0])
+			floor_selection(&elevator)
+			// if no additional floors entered
+			if len(elevator.Queue) == 1 {
+				stop()
+			}
 		}
+		ding(&elevator, elevator.Queue[0])
+		elevator.Queue = elevator.Queue[1:] // dequeue, remove floor after travel
 	}
 }
 
@@ -104,22 +113,11 @@ func ascend_descend(e *Elevator) {
 		time.Sleep(time.Second) // mimic elevator ascending/descending
 		trip_time -= 2
 	}
-	// prevent index out of range
-	if len(e.Queue) == 1 {
-		e.Floor = e.Queue[0] // current floor after we have moved up or down
-		fmt.Printf("'Ding'. %v floor\n", e.Floor)
-		floor_selection(e)
-		// if no additional floors entered
-		if len(e.Queue) == 1 {
-			stop()
-		} else {
-			return
-		}
+}
 
-	}
-	e.Queue = e.Queue[1:] // dequeue, remove the floor that we traveled to from our queue
-	e.Floor = e.Queue[0]  // current floor after we have moved up or down
-	fmt.Printf("'Ding'. %v floor\n", e.Floor)
+func ding(e *Elevator, current int) {
+	e.Floor = current // floor after movement
+	fmt.Printf("'Ding'. %v floor\n", current)
 }
 
 func stop() {
