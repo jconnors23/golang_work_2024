@@ -1,4 +1,4 @@
-// implement stack with slices
+// implement stack with slices as additional feature
 
 /*
 
