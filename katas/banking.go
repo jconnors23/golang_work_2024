@@ -15,10 +15,37 @@ Date        Amount  Balance
 
 */
 
-package main
+package bank
+
+import (
+	"fmt"
+	"os"
+	"time"
+)
 
 type Account struct {
 	name         string
 	balance      float64
-	transactions map[string]int
+	transactions map[string]float64
+}
+
+func (a *Account) withdraw(amount float64) {
+	if a.balance < amount {
+		fmt.Println("account has insufficient funds.")
+		os.Exit(0)
+	}
+	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+}
+
+func (a *Account) deposit(amount float64) {
+	a.balance += amount
+	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+}
+
+// func (a *Account) list() map[string]int {
+// 	return
+// }
+
+func main() {
+	fmt.Println(list("John"))
 }
