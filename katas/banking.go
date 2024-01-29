@@ -1,5 +1,3 @@
-// implement stack
-
 /*
 
 Write a class Account that offers the following methods:
@@ -15,18 +13,19 @@ Date        Amount  Balance
 
 */
 
-package bank
+package main
 
 import (
 	"fmt"
 	"os"
+	"sort"
 	"time"
 )
 
 type Account struct {
 	name         string
 	balance      float64
-	transactions map[string]float64
+	transactions map[time.Time]float64
 }
 
 func (a *Account) withdraw(amount float64) {
@@ -34,18 +33,37 @@ func (a *Account) withdraw(amount float64) {
 		fmt.Println("account has insufficient funds.")
 		os.Exit(0)
 	}
-	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+	a.transactions[time.Now()] = float64(amount)
 }
 
 func (a *Account) deposit(amount float64) {
 	a.balance += amount
-	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+	a.transactions[time.Now()] = float64(amount)
+}
+
+// transaction map is inherently unsorted, using a sort method to implement stack behavior
+func (a *Account) stack_transactions() []time.Time {
+	lifo := make([]time.Time, 0, len(a.transactions))
+	for transaction := range a.transactions {
+		lifo = append(lifo, transaction)
+	}
+	sort.Slice(lifo, func(i, j int) bool {
+		return lifo[i].After(lifo[j])
+	})
+	return lifo
+}
+
+func (a *Account) list() {
+	lifo := a.stack_transactions()
+	for _, t := range lifo {
+		fmt.Println(t, a.transactions[t]) // print transactions by most recent
+	}
 }
 
 // func (a *Account) list() map[string]int {
 // 	return
 // }
 
-func main() {
-	fmt.Println(list("John"))
+func main_bank() {
+	fmt.Println()
 }
