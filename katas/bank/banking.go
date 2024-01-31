@@ -22,10 +22,15 @@ import (
 	"time"
 )
 
+type Transaction struct {
+	amount float64
+	form   string
+}
+
 type Account struct {
 	name         string
 	balance      float64
-	transactions map[string]float64
+	transactions map[string]Transaction
 }
 
 func withdraw(a *Account, amount float64) {
@@ -33,12 +38,14 @@ func withdraw(a *Account, amount float64) {
 		fmt.Println("account has insufficient funds.")
 		os.Exit(0)
 	}
-	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+	transaction := Transaction{amount, "withdraw"}
+	a.transactions[time.Now().Format("2006-01-02")] = transaction
 }
 
 func deposit(a *Account, amount float64) {
 	a.balance += amount
-	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
+	transaction := Transaction{amount, "deposit"}
+	a.transactions[time.Now().Format("2006-01-02")] = transaction
 }
 
 // transaction map is inherently unsorted, using a sort method to implement stack behavior
@@ -71,11 +78,11 @@ func main() {
 	a := Account{
 		name:    "test",
 		balance: 1000,
-		transactions: map[string]float64{
-			"2015-04-05": 500,
-			"2016-09-09": 100,
-			"2013-01-01": 1000,
-			"2024-06-08": 1000,
+		transactions: map[string]Transaction{
+			"2015-04-05": {500, "deposit"},
+			"2016-09-09": {100, "withdraw"},
+			"2013-01-01": {1000, "deposit"},
+			"2024-06-08": {1000, "withdraw"},
 		},
 	}
 	list(&a)
