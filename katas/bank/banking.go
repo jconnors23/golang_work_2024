@@ -33,22 +33,22 @@ func withdraw(a *Account, amount float64) {
 		fmt.Println("account has insufficient funds.")
 		os.Exit(0)
 	}
-	a.transactions[time.Now().Format("01/01/2024 00:00:00")] = float64(amount)
+	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
 }
 
 func deposit(a *Account, amount float64) {
 	a.balance += amount
-	a.transactions[time.Now().Format("01/01/2024 00:00:00")] = float64(amount)
+	a.transactions[time.Now().Format("2006-01-02")] = float64(amount)
 }
 
 // transaction map is inherently unsorted, using a sort method to implement stack behavior
 func stack_transactions(a *Account) []time.Time {
 	lifo := make([]time.Time, 0, len(a.transactions))
-	timeLayout := "01/01/2024 00:00:00"
+	timeLayout := "2006-01-02"
 	for transaction := range a.transactions {
 		parsedTime, err := time.Parse(timeLayout, transaction)
 		if err != nil {
-			fmt.Println("time parsing error", err)
+			fmt.Println("error", err)
 			os.Exit(0)
 		}
 		lifo = append(lifo, parsedTime)
@@ -61,7 +61,7 @@ func stack_transactions(a *Account) []time.Time {
 
 func list(a *Account) {
 	lifo := stack_transactions(a)
-	timeLayout := "01/01/2024 00:00:00"
+	timeLayout := "2006-01-02"
 	for _, t := range lifo {
 		fmt.Println(t.Format(timeLayout), a.transactions[t.Format(timeLayout)]) // print transactions by most recent
 	}
@@ -72,8 +72,8 @@ func main() {
 		name:    "test",
 		balance: 1000,
 		transactions: map[string]float64{
-			"24.12.2015": 500,
-			"23.8.2016":  100,
+			"2015-04-05": 500,
+			"2016-09-09": 100,
 		},
 	}
 	list(&a)
