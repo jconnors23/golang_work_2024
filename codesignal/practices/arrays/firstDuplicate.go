@@ -8,6 +8,14 @@ find the first duplicate number for which the second occurrence has the minimal 
 
 For a = [2, 1, 3, 5, 3, 2], the output should be solution(a) = 3.
 
+// init duplicate two dup objects, counter var
+// when dup found, add index of 2nd to first dup
+// if & when second dup found, add index of 2nd to 2nd dup
+// compare and return, if no dupes return -1
+
+// edge - >2 dupes, edge - > 3 of a kind or more
+
+
 */
 
 package main
@@ -22,5 +30,28 @@ func main() {
 }
 
 func solution(arr []int) int {
-
+	var count int
+	var dupi1, dupi2 []int
+	// find duplicates (bf)
+	for i := 0; i < len(arr); i++ {
+		current := arr[i]
+		for j := 0; j < len(arr); j++ {
+			if arr[j] == current {
+				if count == 0 {
+					dupi1 = append(dupi1, current, j) // add duplicate number and its index
+					count++
+					continue
+				} else {
+					dupi2 = (append(dupi2, current, j))
+					count++
+					continue
+				}
+			}
+		}
+	}
+	if dupi1[1] < dupi2[1] {
+		return dupi1[1]
+	} else {
+		return dupi2[1]
+	}
 }
