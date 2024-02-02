@@ -15,7 +15,6 @@ For a = [2, 1, 3, 5, 3, 2], the output should be solution(a) = 3.
 
 // edge - >2 dupes, edge - > 3 of a kind or more
 
- comment test
 */
 
 package main
@@ -26,32 +25,36 @@ import (
 
 func main() {
 	arr := []int{2, 1, 3, 5, 3, 2}
-	fmt.Println(solution(arr))
+	fmt.Println(bf_solution(arr))
 }
 
-func solution(arr []int) int {
+func bf_solution(arr []int) int {
 	var count int
-	var dupi1, dupi2 []int
-	// find duplicates (bf)
+	var dup1, dup2 []int
 	for i := 0; i < len(arr); i++ {
 		current := arr[i]
 		for j := 0; j < len(arr); j++ {
-			if arr[j] == current {
+			if arr[j] == current && j != i {
+				// if first dup
 				if count == 0 {
-					dupi1 = append(dupi1, current, j) // add duplicate number and its index
+					dup1 = append(dup1, current, i, j) // add duplicate number and its 1st, 2nd index
 					count++
-					continue
 				} else {
-					dupi2 = (append(dupi2, current, j))
+					dup2 = (append(dup2, current, i, j))
 					count++
-					continue
 				}
 			}
 		}
 	}
-	if dupi1[1] < dupi2[1] {
-		return dupi1[1]
-	} else {
-		return dupi2[1]
+	if count == 0 {
+		return -1 // if no dupes
+	} else if count == 1 {
+		return dup1[1] // return first index of only duplicate
+	} else { // return (the number) smallest index of second occurence among dupes
+		if dup1[2] < dup2[2] {
+			return dup1[0]
+		} else {
+			return dup2[0]
+		}
 	}
 }
