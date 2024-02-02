@@ -15,7 +15,7 @@ For a = [2, 1, 3, 5, 3, 2], the output should be solution(a) = 3.
 
 // edge - >2 dupes, edge - > 3 of a kind or more
 
-
+ comment test
 */
 
 package main
