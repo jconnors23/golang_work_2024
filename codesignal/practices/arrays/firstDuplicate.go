@@ -23,18 +23,9 @@ For a = [2, 1, 3, 5, 3, 2], the output should be solution(a) = 3.
 
 */
 
-package main
+package arrays
 
-import (
-	"fmt"
-)
-
-func main() {
-	arr := []int{2, 1, 3, 5, 3, 2}
-	fmt.Println(bf_solution(arr))
-}
-
-func bf_solution(arr []int) int {
+func FindDuplicates(arr []int) int {
 	var count int
 	var dup1, dup2 []int
 	for i := 0; i < len(arr); i++ {
