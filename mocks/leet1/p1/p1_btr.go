@@ -7,12 +7,19 @@ import (
 	"strings"
 )
 
+/*
+i ["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"]
+o ["alice,20,800,mtv","alice,50,100,beijing","bob,50,1200,mtv","alice,50,1200,mtv"]
+e ["alice,20,800,mtv","bob,50,1200,mtv","alice,20,800,mtv","alice,50,1200,mtv","alice,20,800,mtv","alice,50,100,beijing"]
+*/
+
 func main() {
-	input := []string{"alice,20,800,mtv", "alice,50,100,beijing"}
+	input := []string{"alice,20,800,mtv", "bob,50,1200,mtv", "alice,20,800,mtv", "alice,50,1200,mtv", "alice,20,800,mtv", "alice,50,100,beijing"}
 	fmt.Println(invalidTransactions(input))
 }
 
 func invalidTransactions(transactions []string) []string {
+	//transactions = inputId(transactions)
 	flags := []string{}
 	for i := 0; i < len(transactions); i++ {
 		current := transactions[i]
@@ -23,12 +30,11 @@ func invalidTransactions(transactions []string) []string {
 		}
 		for j := 0; j < len(transactions); j++ {
 			compare := transactions[j]
-			fmt.Println(compare)
 			if compareName(current, compare) {
 				if compareTime(current, compare) {
 					if compareCity(current, compare) {
 						if contains(current, flags) == false {
-							flags = append(flags, current)
+							flags = append(flags, current) // always append?
 						}
 						if contains(compare, flags) == false {
 							flags = append(flags, compare)
@@ -104,3 +110,14 @@ func checkAmount(a string) bool {
 	}
 	return amount > 1000
 }
+
+// func inputId(t []string) []string {
+// 	// 	newt := []string{}
+// 	// 	for i := 0; i < len(t); i++ {
+// 	// 		str := t[i]
+// 	// 		str = str + "," + string(i)
+// 	// 		newt = append(newt, str)
+// 	// 	}
+// 	// 	fmt.Println(newt)
+// 	// 	return newt
+// 	// }
