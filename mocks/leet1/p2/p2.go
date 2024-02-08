@@ -1,9 +1,13 @@
 /*
 
 
-A company is planning to interview 2n people. Given the array costs where costs[i] = [aCosti, bCosti], the cost of flying the ith person to city a is aCosti, and the cost of flying the ith person to city b is bCosti.
+A company is planning to interview 2n people.
+Given the array costs where costs[i] = [aCosti, bCosti],
+the cost of flying the ith person to city a is aCosti, and the cost of
+flying the ith person to city b is bCosti.
 
-Return the minimum cost to fly every person to a city such that exactly n people arrive in each city.
+Return the minimum cost to fly every person to a city such that
+exactly n people arrive in each city.
 
 
 
@@ -31,3 +35,16 @@ Output: 3086
 
 
 */
+
+package main
+
+import "fmt"
+
+func main() {
+	i := [][]int{{10, 20}, {30, 200}, {400, 50}, {30, 20}}
+	fmt.Println(twoCitySchedCost(i))
+}
+
+func twoCitySchedCost(costs [][]int) int {
+	return 0
+}
