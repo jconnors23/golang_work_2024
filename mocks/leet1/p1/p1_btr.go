@@ -24,7 +24,7 @@ func invalidTransactions(transactions []string) []string {
 	for i := 0; i < len(transactions); i++ {
 		current := transactions[i]
 		if checkAmount(current) {
-			if contains(current, flags) == false {
+			if !contains(current, flags) {
 				flags = append(flags, current)
 			}
 		}
@@ -33,10 +33,10 @@ func invalidTransactions(transactions []string) []string {
 			if compareName(current, compare) {
 				if compareTime(current, compare) {
 					if compareCity(current, compare) {
-						if contains(current, flags) == false {
+						if !contains(current, flags) {
 							flags = append(flags, current) // always append?
 						}
-						if contains(compare, flags) == false {
+						if !contains(compare, flags) {
 							flags = append(flags, compare)
 						}
 					}
