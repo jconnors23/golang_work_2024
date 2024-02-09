@@ -7,5 +7,5 @@ func main() {
 }
 
 func balancedStringSplit(s string) int {
-
+	return 0
 }
