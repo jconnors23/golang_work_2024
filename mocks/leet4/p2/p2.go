@@ -24,7 +24,6 @@ func partitionLabels(s string) []int {
 					position := lastIndex(s, byte(char)) + 1
 					part = s[i:position]
 					fmt.Printf("newpart: %s, curr char: %s\n", part, string(char))
-
 				}
 			}
 			partitions = append(partitions, part)
