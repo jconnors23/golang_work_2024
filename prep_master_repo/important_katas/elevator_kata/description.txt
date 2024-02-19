@@ -1,0 +1,18 @@
+https://kata-log.rocks/lift-kata
+
+Simulate an elevator software system
+starting with simple behaviors and working toward complex ones. 
+Assume good input from calling code and concentrate on the main flow.
+
+Here are some suggested lift features:
+
+a lift responds to calls containing a source floor and direction
+a lift has an attribute floor, which describes it’s current location
+a lift delivers passengers to requested floors
+Queue system for elevator
+Distance logic for traveling to different floors
+you may implement current floor monitor
+you may implement direction arrows
+you may implement doors (opening and closing)
+you may implement DING!
+there can be more than one lift
