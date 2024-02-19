@@ -9,7 +9,7 @@ import (
 
 func main() {
 	a := Account{
-		name:    "test",
+		name:    "Alice",
 		balance: 1000,
 		transactions: map[string]Transaction{
 			"2015-04-05": {500, "deposit"},
@@ -19,9 +19,21 @@ func main() {
 			"2023-06-08": {450, "withdraw"},
 		},
 	}
-	// withdraw(&a, 200)
+	b := Account{
+		name:    "Bob",
+		balance: 1000,
+		transactions: map[string]Transaction{
+			"2012-04-05": {5000, "deposit"},
+			"2012-09-09": {1030, "withdraw"},
+			"2013-01-01": {100, "deposit"},
+			"2006-01-01": {450, "deposit"},
+			"2021-06-08": {1450, "withdraw"},
+		},
+	}
+	withdraw(&b, 200)
 	deposit(&a, 750)
 	list(&a)
+	list(&b)
 
 }
 
@@ -73,6 +85,8 @@ func stack_transactions(a *Account) []time.Time {
 func list(a *Account) {
 	lifo := stack_transactions(a)
 	timeLayout := "2006-01-02"
+	fmt.Printf("Account: %s\n", a.name)
+	fmt.Printf("Balance: $%.2f\n", a.balance)
 	for _, t := range lifo {
 		fmt.Println(t.Format(timeLayout), a.transactions[t.Format(timeLayout)]) // print transactions by most recent
 	}
