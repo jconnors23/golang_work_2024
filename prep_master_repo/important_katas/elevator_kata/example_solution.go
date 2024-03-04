@@ -3,7 +3,7 @@
 - queue for floors
 - elevator goes to closest relative floor
 - direction arrows, UI features, and user prompts
-- os exit
+- os exit for specific inputs / errors
 */
 
 package main
