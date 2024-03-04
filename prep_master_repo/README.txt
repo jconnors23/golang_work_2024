@@ -1,6 +1,8 @@
 2. YT: pointers, structs, slices, perhaps interfaces
 1. Comments: add comments to code 
 3. section 6: add a few more important facts 
+4. create mocks 
+5. add kata mock
 
 Table of Contents:
 
