@@ -78,7 +78,7 @@ III. Starter Prompts:
 For an engineer with prior experience, each question in this section should be easy to solve (leetcode easys). 
 The challenge will be to learn the syntax quickly and to the point where you will not need to look anything up.
 Each question should take around 15 minutes to solve. Questions provided are from https://codesignal.com/ & https://leetcode.com/. 
-For each question, description.txt contains the prompt & source link while example_solution contains my brute force solution for reference. 
+For each question, description.txt contains the prompt, what the prompt is testing, & source link while example_solution contains my brute force solution for reference. 
 
 
 IV. Next Prompts:

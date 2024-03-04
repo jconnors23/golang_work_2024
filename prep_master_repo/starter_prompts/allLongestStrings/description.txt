@@ -7,3 +7,7 @@ Example
 For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be
 solution(inputArray) = ["aba", "vcd", "aba"].
 
+Problem Skills:
+ - creating slices
+ - for & range keywords
+ - append method for slices

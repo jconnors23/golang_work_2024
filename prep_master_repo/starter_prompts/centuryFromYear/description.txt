@@ -10,3 +10,6 @@ For year = 1905, the output should be
 solution(year) = 20;
 For year = 1700, the output should be
 solution(year) = 17.
+
+Problem Skills:
+- 'while' loops in Go

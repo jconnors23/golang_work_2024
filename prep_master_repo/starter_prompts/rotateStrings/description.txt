@@ -16,3 +16,8 @@ Example 2:
 Input: s = "abcde", goal = "abced"
 Output: false
 
+
+Problem Skills:
+- slicing
+- concatenating 
+- helper functions 

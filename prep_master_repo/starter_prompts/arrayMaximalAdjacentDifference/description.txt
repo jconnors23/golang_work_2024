@@ -7,3 +7,8 @@ Example
 
 For inputArray = [2, 4, 1, 0], the output should be
 solution(inputArray) = 3.
+
+Problem Skills: 
+- absolute value, math package
+- type casting
+- array comparisons 

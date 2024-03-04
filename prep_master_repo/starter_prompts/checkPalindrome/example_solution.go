@@ -9,23 +9,23 @@ func main() {
 }
 
 func solution(inputString string) bool {
-	// check for equality on all chars except middle
+	// check for equality on all characters except middle, if all except middle are equivalent input is a palindrome
 	length := len(inputString)
 	if len(inputString) == 1 {
 		return true
 	}
-	count := length
-	for i := 0; i < len(inputString); i++ {
+	point2 := length                                       // use count variable to have pointer at end of word
+	for point1 := 0; point1 < len(inputString); point1++ { // use 'i' to have pointer at beginning of word
 		if len(inputString)%2 == 1 { // if odd num chars
-			if i == int((float64(length / 2))) { // if at middle char ignore in checking
+			if point1 == int((float64(length / 2))) { // if at middle char ignore in checking
 				return true // can assume true once at middle char
 			}
 		}
 
-		if inputString[i] != inputString[count-1] {
+		if inputString[point1] != inputString[point2-1] { // if characters are not the same, not a palindrome
 			return false
 		}
-		count--
+		point2-- // move our pointer inward for further comparisons
 	}
 	return true
 }
