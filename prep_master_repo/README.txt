@@ -1,8 +1,5 @@
-2. YT: pointers, structs, slices, perhaps interfaces
-1. Comments: add comments to code 
-3. section 6: add a few more important facts 
-4. create mocks 
-5. add kata mock
+TODO:
+- create mocks 
 
 Table of Contents:
 
@@ -19,27 +16,28 @@ This repository and guide is to direct an engineer with prior development experi
 preparing for a Golang interview. It is designed to make effective use of time and assumes that there is a week 
 or less to prepare. There are recommended time frames for completing tasks. 
 
-
 II. Interview Preparation Schedule: 
 
 Day 1: 
 
 Install Go and Documentation point of reference: https://go.dev/ 
 
-Tour of Go: https://go.dev/tour/welcome/1 
-
+This site introduces syntax in Go: Tour of Go: https://go.dev/tour/welcome/
 Move at a decent pace up to Generics&Concurrency and do not spend too long on any section. 
-
-This site introduces syntax in Go. 
-
-Most important sections are 'Flow Control Statements (ignore the 'switch' and 'defer' sections)' and 'More Types'. (1-2 hrs)
+The most important sections are 'Flow Control Statements (ignore the 'switch' and 'defer' sections)' and 'More Types'. (1-2 hrs)
 
 Complete 1-2 starter_prompts. (1hr) 
 
 Day 2: 
 
+Watch the following videos: 
+
+Slices: https://www.youtube.com/watch?v=NnBKdUu1Q0U
+Structs: https://www.youtube.com/watch?v=sPX6ORiyd0o
+Maps: https://www.youtube.com/watch?v=92Q8n3LlMOY
+Pointers: https://www.youtube.com/watch?v=XOz_Xu5WanQ
+
 Finish starter_prompts. Look up help needed for syntax. (2-3hrs)
-If you complete these prompts early, review material studied thus far or review section 6. 
 
 Day 3:
 
@@ -98,10 +96,12 @@ An interview question similar to a katas prompt will be more open ended.
 
 VI. Good to Know:
 
-Below are important quick facts about Go that you should be aware of before an interview: 
+Interfaces: https://www.youtube.com/watch?v=2T6qePP1BWE
 
-1. Golang is a strongly typed language.
-2. Go was created in 2009 and is centered around performance, simplicity, and concurreny. 
+Quick Facts: 
+
+1. Golang is a typed language.
+2. Go was created in 2009 and is centered around performance, simplicity, and concurrency. 
 3. Go has a built in garbage collection mechanism that auto allocates memory. You do not have to worry about garbage collection in Go. 
 4. Goroutines and channels allow you to build programs supporting Concurrency. 
 
