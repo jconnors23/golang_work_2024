@@ -54,12 +54,9 @@ starter_prompts should take 15min, while intermediate_prompts should be complete
 
 Complete 1-2 intermediate_prompts (30-90min) 
 
-
 Day 5: 
 
 Review previous coding exercises & materials. (30-45min)
-
-Warmup for a mock interview by doing 1 or 2 starter_prompts. (30min)
 
 Complete a mock interview (timed session with 1 starter & 1 intermediate prompt or 1 kata). (1hr)
 
@@ -71,7 +68,6 @@ A katas based question will be more open ended compared to the prompts completed
 It could show up in a form similar to the banking kata completed on day 4. Solutions to these do not have to be super thorough, a good solution will provide an initial approach to solving the open ended prompt.  
 
 Review section 6 (15min). 
-
 
 III. Starter Prompts:
 
