@@ -16,12 +16,12 @@ account for large values of k ?
 
 */
 
-func main() {
-	//nums := []int{1, 2, 3, 4, 5, 6, 7} // want 5,6,7,1,2,3,4
-	nums := []int{-1, -100, 3, 99} // want 3 99 s-1 -100
-	//fmt.Println(removeDuplicates(nums))
-	fmt.Println(rotate(nums, 2))
-}
+// func main() {
+// 	//nums := []int{1, 2, 3, 4, 5, 6, 7} // want 5,6,7,1,2,3,4
+// 	nums := []int{-1, -100, 3, 99} // want 3 99 s-1 -100
+// 	//fmt.Println(removeDuplicates(nums))
+// 	fmt.Println(rotate(nums, 2))
+// }
 
 // correct but not in place
 func rotate(nums []int, k int) []int {

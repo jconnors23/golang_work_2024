@@ -4,25 +4,25 @@ package main
 
 import "fmt"
 
+// func main() {
+// 	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+// 	fmt.Println(removeDuplicates(nums))
+// }
+
 func removeDuplicates(nums []int) int {
-	j := 0 // track index of next non duplicate
-	for i := 1; i < len(nums); i++ {
-		if nums[i] != nums[j] { // at non duplicate element
-			j++
-			fmt.Printf("before shift: %d %d\n", nums, j)
-			nums[j] = nums[i]
-			fmt.Printf("after shift: %d\n", nums)
+	i := 0 // unique elements tracker
+	for index, v := range nums {
+		_ = v
+		fmt.Printf("nums before: %d\n", nums)
+		if nums[index] != nums[i] {
+			i++
+			nums[i] = nums[index] // shift unique element left
 		}
 	}
-	fmt.Printf("before slice dupe: %d\n", nums)
-	// return up to last non duplicate
-	nums = nums[:j+1]
-	fmt.Printf("after slice dupe: %d\n", nums)
-	return len(nums)
+	return i + 1
 }
 
-// not in place:
-
+// NIP:
 // func removeDuplicates2(nums []int) int {
 // 	new := []int{}
 // 	for i := 0; i < len(nums); i++ {
@@ -33,7 +33,7 @@ func removeDuplicates(nums []int) int {
 // 	}
 // 	nums = new
 // 	fmt.Printf("%d\n", nums)
-// 	return len(nums)
+// 	return len(new)
 // }
 
 // func contains(new []int, target int) bool {
@@ -43,30 +43,4 @@ func removeDuplicates(nums []int) int {
 // 		}
 // 	}
 // 	return false
-// }
-
-// not correct:
-//func removeDuplicates(nums []int) int {
-// 	for i := 0; i < len(nums); i++ {
-// 		ele := nums[i]
-// 		for index, v := range nums {
-// 			if index == i { // ignore value we are currently at in arr
-// 				continue
-// 			}
-// 			// fmt.Printf("V: %d\n", v)
-// 			// fmt.Printf("Element: %d\n", ele)
-// 			if v == ele {
-// 				if index >= len(nums) { // if at last element
-// 					nums = nums[:len(nums)-1]
-// 					fmt.Printf("After Last element: %d\n", nums)
-// 					continue
-// 				}
-// 				fmt.Printf("V: %d\n", v)
-// 				nums = append(nums[:index], nums[index+1:]...) // remove duplicate element
-// 				fmt.Printf("After Normal remove: %d\n", nums)
-// 			}
-// 		}
-// 	}
-// 	fmt.Printf("%d\n", nums)
-// 	return len(nums)
 // }
