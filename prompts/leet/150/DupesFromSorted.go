@@ -4,11 +4,6 @@ package main
 
 import "fmt"
 
-func main() {
-	nums := []int{1, 1, 2, 2, 3, 4}
-	fmt.Println(removeDuplicates(nums))
-}
-
 func removeDuplicates(nums []int) int {
 	j := 0 // track index of next non duplicate
 	for i := 1; i < len(nums); i++ {
