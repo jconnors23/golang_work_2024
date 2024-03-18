@@ -1,0 +1,11 @@
+Simulate a software system for a treadmill. 
+
+Here are some potential features for your system:
+
+a. a user can start and stop the treadmill 
+b. a user can speed up or speed down 
+c. a user can see their total distance traveled
+d. a user can see their total calories burned 
+e. a user can see their average speed throughout the workout
+
+Metrics for each workout session do not need to be stored.  
