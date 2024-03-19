@@ -24,42 +24,34 @@ func Constructor() RandomizedSet {
 	return new_set
 }
 
-func (this *RandomizedSet) Insert(val int) bool {
-	if val > this.Peep() {
-		this.set = append(this.set, val)
-		return true
-	}
-	for _, v := range this.set {
+func (s *RandomizedSet) Insert(val int) bool {
+	for _, v := range s.set {
 		if v == val {
 			return false
 		}
 	}
-	this.set = append(this.set, val)
+	s.set = append(s.set, val)
 	return true
 }
 
-func (this *RandomizedSet) Peep() int {
-	return this.set[0]
+func (s *RandomizedSet) Stack() {
+	sort.Ints(s.set)
 }
 
-func (this *RandomizedSet) Stack() {
-	sort.Ints(this.set)
-}
-
-func (this *RandomizedSet) Remove(val int) bool {
-	for index, v := range this.set {
+func (s *RandomizedSet) Remove(val int) bool {
+	for index, v := range s.set {
 		if v == val {
-			this.set = append(this.set[:index], this.set[index+1:]...)
-			this.Stack()
+			s.set = append(s.set[:index], s.set[index+1:]...)
+			s.Stack()
 			return true
 		}
 	}
 	return false
 }
 
-func (this *RandomizedSet) GetRandom() int {
-	randomIndex := rand.Intn(len(this.set))
-	return this.set[randomIndex]
+func (s *RandomizedSet) GetRandom() int {
+	randomIndex := rand.Intn(len(s.set))
+	return s.set[randomIndex]
 }
 
 /**
