@@ -9,10 +9,6 @@ import (
 
 // stack behavior
 
-func main() {
-
-}
-
 type RandomizedSet struct {
 	set []int
 }
