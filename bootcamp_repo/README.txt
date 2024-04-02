@@ -17,38 +17,22 @@ II Curriculum:
 Prompts: 
 
 Code signal Arcade is an introductory resource to begin practicing Go Syntax and concepts. 
-Complete 1-2 prompts in "Intro" or "The Core" each day as you begin to learn Go. - https://app.codesignal.com/arcade
+Complete 4-5 prompts in "Intro" or "The Core" each week: https://app.codesignal.com/arcade
 This can be substituded or supplemented by completing leetcode easy/medium prompts: https://leetcode.com/
 
 Katas: 
 
 A kata is an open ended prompt. Completing katas will allow you to practice different things while learning Go and will solidify understanding.
-It is recommended to complete one kata throughout each week of this curriculum in the following order:
-
-Week 1 Kata: 
-
-https://kata-log.rocks/manhattan-distance-kata
-
-Week 2 Kata: 
-
-https://kata-log.rocks/lift-kata
-
-Week 3 Kata: 
-
-https://kata-log.rocks/banking-kata
-
-Week 4 Kata: 
-
-https://kata-log.rocks/unusual-spending-kata
+It is recommended to complete one kata throughout each week of this curriculum. 
 
 Week 1 Learning: 
 
 Install Go and Documentation point of reference: https://go.dev/ 
 
-Learn beginner syntax in Go (up to sections with generics and concurrency): 
-    Tour of Go: https://go.dev/tour/welcome/
-    Go by Example: https://gobyexample.com/
-
+Learn beginner syntax in Go: 
+ -Tour of Go: https://go.dev/tour/welcome/
+ -Go by Example: https://gobyexample.com/
+ 
 Facts about Go: 
 
 1. Golang is a statically typed & compiled language.
@@ -62,14 +46,41 @@ This is a good resource to both learn Go concepts initally as well as refer back
 
 https://exercism.org/tracks/go/concepts
 
-By the end of week 1 you should have: 
- a. Basic understanding of some syntax in Go
- b. Ability to complete some leetcode easy prompts in Go
+Week 1 Kata: https://kata-log.rocks/manhattan-distance-kata
 
+Week 2: 
 
+Learning Videos: 
+
+Slices: https://www.youtube.com/watch?v=NnBKdUu1Q0U
+Structs: https://www.youtube.com/watch?v=sPX6ORiyd0o
+Maps: https://www.youtube.com/watch?v=92Q8n3LlMOY
+Pointers: https://www.youtube.com/watch?v=XOz_Xu5WanQ
+Interfaces: https://www.youtube.com/watch?v=2T6qePP1BWE
+
+Week 2 Kata: https://kata-log.rocks/lift-kata
+
+Week 3: 
+
+Percipio Course: 
+
+Learning Slides: 
+
+Week 3 Kata: https://kata-log.rocks/banking-kata
+
+Week 4: 
+
+Percipio Course: 
+
+Learning Slides:
+
+Week 4 Kata: https://kata-log.rocks/unusual-spending-kata
 
 
 
 V Further Resources:
 
-https://go.dev/doc/effective_go
+Documentation: https://go.dev/doc/effective_go
+Further Reading: https://dave.cheney.net/practical-go
+Golang Cheatsheet: https://golang.sk/images/blog/cheatsheets/go-cheat-sheet.pdf
+Golang Full Course: https://www.udemy.com/course/learn-how-to-code/?couponCode=ST13MT40224
