@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // https://leetcode.com/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=top-interview-150
 
 /*
@@ -10,10 +8,10 @@ import "fmt"
 	return - > not o(n)?
 */
 
-func main() {
-	nums := []int{-1, 1, 0, -3, 3}
-	fmt.Println(productExceptSelf(nums))
-}
+// func main() {
+// 	nums := []int{-1, 1, 0, -3, 3}
+// 	fmt.Println(productExceptSelf(nums))
+// }
 
 func productExceptSelf(nums []int) []int {
 	left := make([]int, len(nums))  // store left products
