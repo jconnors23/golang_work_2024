@@ -1,49 +1,66 @@
-//https://leetcode.com/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150
-
+// https://leetcode.com/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
-/*
-k = 3
-1,2,3,4,5,6,7 - > 5,6,7,1,2,3,4
+func main() {
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13} // [2, 1]
+	fmt.Println(rotate(nums, 17))
+	//expected: [10,11,12,13,1,2,3,4,5,6,7,8,9]")
+}
 
-a. create new arr of same size
-b. while < k, push back els of nums to new arr
-c. push back portion of slice to new arr & return
-
-account for large values of k ?
-
-*/
-
-// func main() {
-// 	//nums := []int{1, 2, 3, 4, 5, 6, 7} // want 5,6,7,1,2,3,4
-// 	nums := []int{-1, -100, 3, 99} // want 3 99 s-1 -100
-// 	//fmt.Println(removeDuplicates(nums))
-// 	fmt.Println(rotate(nums, 2))
-// }
-
-// correct but not in place
 func rotate(nums []int, k int) []int {
-	rotation := []int{}      // init new slice
-	for i := k; i > 0; i-- { // shift back k elements to front
-		fmt.Printf("back kth element: %d\n", nums[len(nums)-i])
-		rotation = append(rotation, nums[len(nums)-i])
-		fmt.Printf("post rotation: %d\n", rotation)
-	}
-	rest := len(nums) - k
-	rotation = append(rotation, nums[0:rest]...) // append rest of original slice elements
-	copy(nums, rotation)
+	split := k % len(nums)
+	reverse(nums[:])
+	reverse(nums[:split])
+	reverse(nums[split:])
 	return nums
 }
 
-// func copyToK(nums []int, k int) []int {
-// 	var ans = make([]int, len(nums))
+func reverse(nums []int) []int {
+	sort.Slice(nums, func(i, j int) bool {
+		return i > j
+	})
+	return nums
+}
 
-// 	for i := 0; i < len(nums); i++ {
-// 		idx := (i + k) % len(nums) // the modulo operator gives us the overflow remainder and that delivers our idx
-// 		ans[idx] = nums[i]
+// func rotate(nums []int, k int) []int {
+// 	rotation := []int{}
+// 	num_shift := len(nums) - k
+// 	rest, index := num_shift, num_shift
+// 	if len(nums) - k < 0 {
+// 		handlenegatives(nums, k)
 // 	}
-
-// 	return ans
+// 	for k > 0 { // shift back k elements to front
+// 		rotation = append(rotation, nums[index])
+// 		k--
+// 	}
+// 	if rest > 0 {
+// 		rotation = append(rotation, nums[0:rest]...) // append rest of original slice elements
+// 	}
+// 	copy(nums, rotation)
+// 	return nums
 // }
+
+// func handlenegatives(nums, k) {
+
+// }
+
+// fmt.Printf("before rotation %d\n", rotation)
+// fmt.Printf("before append %d\n", rotation)
+// fmt.Printf("after rotation %d\n", rotation)
+// fmt.Printf("after append %d\n", rotation)
+// func rotate(nums []int, k int) []int {
+
+// }
+
+/*
+ [ 1 8 3 9]  [ 1 8 3 9 _ _ _ _ ]
+ can we swap with elements k units behind? - take nums[-k] and swap with nums[-k - k ? ]
+element: nums[len(nums)-k] swap to: nums[len(nums)-k]
+iterate -
+
+*/
