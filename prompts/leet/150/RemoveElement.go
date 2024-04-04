@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func main() {
-	nums := []int{3, 3}
-	fmt.Println(removeElement(nums, 2))
-}
+// func main() {
+// 	nums := []int{3, 3}
+// 	fmt.Println(removeElement(nums, 2))
+// }
 
 func removeElement(nums []int, val int) int {
 	track := findFirst(val, nums)
