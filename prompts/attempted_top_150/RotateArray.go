@@ -7,17 +7,25 @@ import (
 )
 
 func main() {
-	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13} // [2, 1]
+	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}
+	//nums := []int{-1, -100, 3, 99}
 	fmt.Println(rotate(nums, 17))
-	//expected: [10,11,12,13,1,2,3,4,5,6,7,8,9]")
+	/*
+		Output
+		[11,12,13,1,2,9,4,5,6,7,8,10,3]
+		Expected
+		[10,11,12,13,1,2,3,4,5,6,7,8,9]
+	*/
 }
 
 func rotate(nums []int, k int) []int {
-	split := k % len(nums)
-	reverse(nums[:])
-	reverse(nums[:split])
-	reverse(nums[split:])
+	k = k % len(nums)
+	reverse(nums)
+	reverse(nums[0:k])
+	reverse(nums[k+1:])
+
 	return nums
+	//fmt.Println(nums)
 }
 
 func reverse(nums []int) []int {
