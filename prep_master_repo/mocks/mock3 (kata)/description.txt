@@ -1,0 +1,14 @@
+From Checking_Account_Requirements in Technology Ops Program -> COFI resources:
+
+A solution is need to implement operations for a checking account. for now, ignore authentication and authorization concerns. this is a proof of concept. In general, the major operations needed are:
+- create an account. = {in: customer name, person-id, state of residence; out: account_num} person-id must be unique
+- list all accounts (GET) {out: list of objects: {customer name, person-id, account-num, status of account, date account was opened, balance}}
+- deactivate an account. (no delete!) {in: account_num}
+- list all transactions for a specified account. (GET) {in: account_num; out:transaction_id, transaction-date, transaction amount, transaction-type, comment} 
+- apply debits or credits to an account. {in: account_num, transaction amount, transaction_type, comment; out: transaction_id,current balance}
+
+For now, the account information can be stored in memory (which means, when the application shuts down, all account and their history is lost). a future enhancement would be to add persistent storage. 
+
+To start off, build the swagger/API contract. and design how you will store the application data. ( you will need data structures like slices stored in application memory to maintain state.)
+
+initially robust error handling and fault tolerance is not needed to be implemented. but they should be considered or acknowledged in the current design, for future enhancement.
